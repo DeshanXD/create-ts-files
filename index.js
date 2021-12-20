@@ -102,17 +102,17 @@ misc/
     },
   ]); // end of writeFiles
 
-  cp.exec("npm init");
-  cp.exec("git init");
-
   spinner.text = "Installing Dependancies!";
 
-  try {
-    cp.exec("yarn add typescript ts-node @types/node --dev");
-  } catch (error) {
-    console.log(error);
-  } finally {
-    spinner.succeed("Everything is ready");
-  }
+  cp.exec("npm init -y", { cwd: process.cwd() }, () => {
+    cp.exec(
+      "yarn add typescript ts-node @types/node --dev",
+      { cwd: process.cwd() },
+      () => {
+        cp.exec("git init");
+      }
+    );
+  });
+
   spinner.stop();
 })();
