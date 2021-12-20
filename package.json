@@ -1,5 +1,5 @@
 {
-  "name": "create-ts-config",
+  "name": "create-ts-files",
   "version": "1.0.0",
   "description": "Starterkit for typescript project",
   "main": "index.js",
