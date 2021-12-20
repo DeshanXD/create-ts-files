@@ -1,8 +1,12 @@
 #!/usr/bin/env node
-const fs = require("fs");
-const outdent = require("outdent");
-const cp = require("child_process");
-const path = require("path");
+
+import fs from "fs";
+import outdent from "outdent";
+import cp from "child_process";
+import path from "path";
+import ora from "ora";
+
+const spinner = ora("Generating files!").start();
 
 // create folders
 if (!fs.existsSync(path.join(process.cwd(), "src")))
@@ -98,7 +102,17 @@ misc/
     },
   ]); // end of writeFiles
 
-  await cp.exec("yarn init -y");
-  await cp.exec("git init");
-  await console.log("Everything is ready!");
+  cp.exec("npm init");
+  cp.exec("git init");
+
+  spinner.text = "Installing Dependancies!";
+
+  try {
+    cp.exec("yarn add typescript ts-node @types/node --dev");
+  } catch (error) {
+    console.log(error);
+  } finally {
+    spinner.succeed("Everything is ready");
+  }
+  spinner.stop();
 })();
