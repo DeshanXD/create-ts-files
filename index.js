@@ -109,10 +109,10 @@ misc/
       "yarn add typescript ts-node @types/node --dev",
       { cwd: process.cwd() },
       () => {
-        cp.exec("git init");
+        cp.exec("git init", { cwd: process.cwd() }, () => {
+          spinner.succeed("Everything is ready!");
+        });
       }
     );
   });
-
-  spinner.stop();
 })();
