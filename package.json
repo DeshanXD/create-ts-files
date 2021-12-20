@@ -1,6 +1,6 @@
 {
   "name": "create-ts-files",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Starterkit for typescript project",
   "main": "index.js",
   "bin": "index.js",
