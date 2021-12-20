@@ -80,6 +80,12 @@ const writeFiles = async (fileArray) => {
       `,
     },
     {
+      path: "README.md",
+      content: `
+README.md
+      `,
+    },
+    {
       path: ".gitignore",
       content: `
 node_modules
@@ -93,5 +99,6 @@ misc/
   ]); // end of writeFiles
 
   await cp.exec("yarn init -y");
+  await cp.exec("git init");
   await console.log("Everything is ready!");
 })();
