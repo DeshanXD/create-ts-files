@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 import fs from "fs";
 import outdent from "outdent";
 import cp from "child_process";
